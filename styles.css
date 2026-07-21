@@ -26,6 +26,7 @@ body {
   color: var(--ink);
   background: var(--paper);
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 a {
@@ -53,6 +54,7 @@ img {
 }
 
 .nav {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -633,7 +635,21 @@ img {
   font-size: 0.95rem;
 }
 
-@media (max-width: 860px) {
+@media (min-width: 1200px) {
+  .container {
+    width: min(1240px, calc(100% - 2.5rem));
+  }
+
+  .hero-grid {
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero {
+    padding: 4.25rem 0 3.25rem;
+  }
+
   .hero-grid,
   .about-grid,
   .process-grid,
@@ -642,27 +658,44 @@ img {
   }
 
   .services-grid,
-  .projects-grid,
-  .testimonials-grid {
+  .featured-services-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 860px) {
+  .section {
+    padding: 4rem 0;
+  }
+
+  .hero-card-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
   .menu-toggle {
     display: inline-block;
   }
 
   .nav-links {
     position: absolute;
-    top: 100%;
+    top: calc(100% + 0.4rem);
     left: 0;
     right: 0;
     display: none;
     flex-direction: column;
+    gap: 0.75rem;
     background: rgba(250, 249, 246, 0.98);
     padding: 1rem;
-    border-bottom: 1px solid var(--silver-light);
+    border: 1px solid var(--silver-light);
+    border-radius: 0.9rem;
+    box-shadow: var(--shadow);
   }
 
   .nav-links.open {
@@ -673,10 +706,25 @@ img {
     padding-top: 4rem;
   }
 
+  .hero-actions,
+  .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions .btn,
+  .form-actions .btn {
+    width: 100%;
+  }
+
+  .hero-highlights {
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
   .stats-grid,
   .services-grid,
-  .projects-grid,
-  .testimonials-grid {
+  .featured-services-grid {
     grid-template-columns: 1fr;
   }
 
@@ -687,5 +735,85 @@ img {
 
   .stats-grid div:last-child {
     border-bottom: none;
+  }
+
+  .footer-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: min(100% - 1.2rem, 1120px);
+  }
+
+  .site-header {
+    padding: 0.1rem 0;
+  }
+
+  .brand-text strong {
+    font-size: 0.95rem;
+  }
+
+  .brand-text small {
+    font-size: 0.63rem;
+    letter-spacing: 0.08em;
+  }
+
+  .brand-logo {
+    width: 2.7rem;
+  }
+
+  .hero {
+    padding: 3.2rem 0 2.8rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(1.75rem, 8vw, 2.3rem);
+  }
+
+  .hero p {
+    font-size: 0.98rem;
+  }
+
+  .hero-card,
+  .card,
+  .contact-form {
+    padding: 1.1rem;
+  }
+
+  .section {
+    padding: 3.25rem 0;
+  }
+
+  .contact-form input,
+  .contact-form textarea,
+  .btn {
+    font-size: 0.96rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .brand {
+    gap: 0.55rem;
+  }
+
+  .brand-logo {
+    width: 2.4rem;
+  }
+
+  .btn {
+    padding: 0.8rem 1rem;
+  }
+
+  .hero-highlights {
+    font-size: 0.95rem;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 700px) {
+  .hero {
+    padding: 3rem 0 2.25rem;
   }
 }
